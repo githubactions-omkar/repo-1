@@ -24,7 +24,3 @@ jobs:
     uses: glcp/managed-ci-workflow/.github/workflows/mci-build.yaml@main
     secrets: inherit
     needs: [mci-check, mci-lint, mci-unit-test]
-  post-build:
-    uses: glcp/managed-ci-workflow/.github/workflows/mci-post-build.yaml@main
-    secrets: inherit
-    needs: build
