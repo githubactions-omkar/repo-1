@@ -32,7 +32,7 @@ jobs:
 
       - name: Set Completion Time
         run: |
-          git diff origin/${{ input.target_branch }} origin/${{ input.head_branch}} | gawk '
+          git diff origin/"${{ input.target_branch }}" origin/"${{ input.head_branch}}" | gawk '
           match($0,"^@@ -([0-9]+),([0-9]+) [+]([0-9]+),([0-9]+) @@",a){
             left=a[1]
             ll=length(a[2])
