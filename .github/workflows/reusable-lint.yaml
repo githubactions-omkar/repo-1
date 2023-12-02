@@ -20,8 +20,8 @@ on:
         type: string
         required: true
 env:
-  TARGET_BRANCH: ${{ input.target_branch }}
-  HEAD_BRANCH: ${{ input.head_branch}}
+  TARGET_BRANCH: ${{ inputs.target_branch }}
+  HEAD_BRANCH: ${{ inputs.head_branch}}
 jobs:
   Git-operations:
     runs-on: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
-          ref: ${{ input.head_branch }}
+          ref: ${{ inputs.head_branch }}
 
       - name: Download Super lint log
         if: inputs.lint_logfile_name != ''
