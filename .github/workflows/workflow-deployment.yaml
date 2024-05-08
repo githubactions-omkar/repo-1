@@ -1,0 +1,36 @@
+modules:
+  - name: managed-ci-workflow
+    description: Managed CI Workflow
+    repositories:
+      - name: mci-test-1
+        refspec: tags/v1.2.0
+      - name: mci-test-2
+        refspec: tags/v1.1.0
+      - name: managed-ci-workflow-test-maven
+        refspec: main
+      - name: managed-ci-workflow-test-python
+        refspec: main
+        optional_workflows:
+          - managed-ci-pr-ft.yaml
+      - name: managed-ci-workflow-test-golang
+        refspec: main
+      - name: managed-ci-workflow-test-scala
+        refspec: main
+      - name: hpedev-sample-go
+        refspec: tags/v1.1.0
+      - name: test-app-provision
+        refspec: tags/v1.0.1
+      - name: service-identity
+        refspec: tags/v1.1.0
+      - name: service-registry
+        refspec: tags/v1.1.0
+      - name: service-provision
+        refspec: tags/v1.0.1
+      - name: app-catalog
+        refspec: tags/v1.0.1
+      - name: app-provision
+        refspec: tags/v1.0.1
+      - name: geo
+        refspec: tags/v1.0.1
+      - name: harmony-data-plane
+        refspec: tags/v1.2.0
