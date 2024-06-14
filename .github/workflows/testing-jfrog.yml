@@ -31,8 +31,9 @@ jobs:
         run: |
           echo "JFROG_USERNAME: $JFROG_USERNAME"
           echo "JFROG_PASSWORD: $JFROG_PASSWORD"
-          echo "JFROG_USERNAME=$JFROG_USERNAME" >> $GITHUB_OUTPUT
-          echo "JFROG_PASSWORD=$JFROG_PASSWORD" >> $GITHUB_OUTPUT
+          echo "JFROG_USERNAME=${JFROG_USERNAME}" >> $GITHUB_OUTPUT
+          echo "JFROG_PASSWORD=${JFROG_PASSWORD}" >> $GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
 
   job2:
     runs-on: ubuntu-latest
