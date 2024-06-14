@@ -1,6 +1,8 @@
 name: testing JFORG
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   example-job:
