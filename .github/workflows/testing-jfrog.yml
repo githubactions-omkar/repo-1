@@ -11,13 +11,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set JFrog Credentials
-        id: jfrog-creds
+      - name: Call Reusable Workflow
+        id: call-reusable
         uses: githubactions-omkar/repo-2@main
         with:
           JFROG_URL: ${{ secrets.JFROG_URL }}
 
       - name: Print JFrog Credentials
         run: |
-          echo "JFROG_USERNAME: $JFROG_USERNAME"
-          echo "JFROG_PASSWORD: $JFROG_PASSWORD"
+          echo "JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}"
+          echo "JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}"
+
+          
