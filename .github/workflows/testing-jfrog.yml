@@ -8,8 +8,8 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     outputs:
-      JFROG_USERNAME: ${{ steps.printvars.outputs.JFROG_USERNAME }}
-      JFROG_PASSWORD: ${{ steps.printvars.outputs.JFROG_PASSWORD }}
+      JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}
+      JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -31,8 +31,8 @@ jobs:
         run: |
           echo "JFROG_USERNAME: $JFROG_USERNAME"
           echo "JFROG_PASSWORD: $JFROG_PASSWORD"
-          echo "JFROG_USERNAME=${JFROG_USERNAME}" >> $GITHUB_OUTPUT
-          echo "JFROG_PASSWORD=${JFROG_PASSWORD}" >> $GITHUB_OUTPUT
+          echo "JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}"
+          echo "JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}"
           echo $GITHUB_OUTPUT
 
   job2:
@@ -40,8 +40,7 @@ jobs:
     needs: example-job
     steps:
       - name: print
-        run: echo "$JFROG_USERNAME $JFROG_PASSWORD"
-        env:
-          JFROG_USERNAME: ${{ needs.example-job.outputs.JFROG_USERNAME }}
-          JFROG_PASSWORD: ${{ needs.example-job.outputs.JFROG_PASSWORD }}
+        run: |
+          echo "JFROG_USERNAME: ${{ needs.example-job.outputs.JFROG_USERNAME }}"
+          echo "JFROG_PASSWORD: ${{ needs.example-job.outputs.JFROG_PASSWORD }}"
           
