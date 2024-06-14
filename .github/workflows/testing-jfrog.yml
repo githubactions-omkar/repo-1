@@ -16,7 +16,6 @@ jobs:
         uses: githubactions-omkar/repo-2@main
         with:
           JFROG_URL: ${{ secrets.JFROG_URL }}
-        secrets:
           ARUBA_JFROG_USERNAME: ${{ secrets.ARUBA_JFROG_USERNAME }}
           ARUBA_JFROG_PASSWORD: ${{ secrets.ARUBA_JFROG_PASSWORD }}
           CSS_JFROG_USERNAME: ${{ secrets.CSS_JFROG_USERNAME }}
