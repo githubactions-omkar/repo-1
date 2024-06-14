@@ -39,4 +39,8 @@ jobs:
     needs: example-job
     steps:
       - name: print
-        run: echo "${{ needs.example-job.outputs.JFROG_USERNAME }} ${{ needs.example-job.outputs.JFROG_PASSWORD }}"
+        run: echo "$JFROG_USERNAME $JFROG_PASSWORD"
+        env:
+          JFROG_USERNAME: ${{ needs.example-job.outputs.JFROG_USERNAME }}
+          JFROG_PASSWORD: ${{ needs.example-job.outputs.JFROG_PASSWORD }}
+          
