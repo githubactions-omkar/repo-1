@@ -7,6 +7,9 @@ on:
 jobs:
   example-job:
     runs-on: ubuntu-latest
+    outputs:
+      JFROG_USERNAME: ${{ steps.printvars.outputs.JFROG_USERNAME }}
+      JFROG_PASSWORD: ${{ steps.printvars.outputs.JFROG_PASSWORD }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,9 +27,16 @@ jobs:
           DEFAULT_JFROG_PASSWORD: ${{ secrets.DEFAULT_JFROG_PASSWORD }}
 
       - name: Print JFrog Credentials
+        id: printvars
         run: |
           echo "JFROG_USERNAME: $JFROG_USERNAME"
           echo "JFROG_PASSWORD: $JFROG_PASSWORD"
+          echo "JFROG_USERNAME=$JFROG_USERNAME" >> $GITHUB_OUTPUT
+          echo "JFROG_PASSWORD=$JFROG_PASSWORD" >> $GITHUB_OUTPUT
 
-
-          
+  job2:
+    runs-on: ubuntu-latest
+    needs: example-job
+    steps:
+      - name: print
+        run: echo "${{ needs.example-job.outputs.JFROG_USERNAME }} ${{ needs.example-job.outputs.JFROG_PASSWORD }}"
