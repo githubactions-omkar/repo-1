@@ -11,7 +11,7 @@ jobs:
 
       - name: Set JFrog Credentials
         id: jfrog-creds
-        uses: my-org/jfrog-credentials-action@v1
+        uses: githubactions-omkar/repo-2@main
         with:
           JFROG_URL: ${{ secrets.JFROG_URL }}
 
