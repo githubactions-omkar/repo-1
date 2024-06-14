@@ -1,0 +1,21 @@
+name: testing JFORG
+
+on: [push]
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set JFrog Credentials
+        id: jfrog-creds
+        uses: my-org/jfrog-credentials-action@v1
+        with:
+          JFROG_URL: ${{ secrets.JFROG_URL }}
+
+      - name: Print JFrog Credentials
+        run: |
+          echo "JFROG_USERNAME: $JFROG_USERNAME"
+          echo "JFROG_PASSWORD: $JFROG_PASSWORD"
