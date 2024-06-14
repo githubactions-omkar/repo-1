@@ -19,27 +19,26 @@ jobs:
         uses: githubactions-omkar/repo-2@main
         with:
           JFROG_URL: ${{ secrets.JFROG_URL }}
-          ARUBA_JFROG_USERNAME: ${{ secrets.ARUBA_JFROG_USERNAME }}
-          ARUBA_JFROG_PASSWORD: ${{ secrets.ARUBA_JFROG_PASSWORD }}
-          CSS_JFROG_USERNAME: ${{ secrets.CSS_JFROG_USERNAME }}
-          CSS_JFROG_PASSWORD: ${{ secrets.CSS_JFROG_PASSWORD }}
-          DEFAULT_JFROG_USERNAME: ${{ secrets.DEFAULT_JFROG_USERNAME }}
-          DEFAULT_JFROG_PASSWORD: ${{ secrets.DEFAULT_JFROG_PASSWORD }}
+          # ARUBA_JFROG_USERNAME: ${{ secrets.ARUBA_JFROG_USERNAME }}
+          # ARUBA_JFROG_PASSWORD: ${{ secrets.ARUBA_JFROG_PASSWORD }}
+          # CSS_JFROG_USERNAME: ${{ secrets.CSS_JFROG_USERNAME }}
+          # CSS_JFROG_PASSWORD: ${{ secrets.CSS_JFROG_PASSWORD }}
+          # DEFAULT_JFROG_USERNAME: ${{ secrets.DEFAULT_JFROG_USERNAME }}
+          # DEFAULT_JFROG_PASSWORD: ${{ secrets.DEFAULT_JFROG_PASSWORD }}
 
-      - name: Print JFrog Credentials
-        id: printvars
-        run: |
-          echo "JFROG_USERNAME: $JFROG_USERNAME"
-          echo "JFROG_PASSWORD: $JFROG_PASSWORD"
-          echo "JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}"
-          echo "JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}"
-          echo $GITHUB_OUTPUT
+      -  name: Print JFrog Credentials
+         id: printvars
+         run: |
+           echo "JFROG_PASSWORD: $JFROG_PASSWORD"
+           echo "JFROG_USERNAME: $JFROG_USERNAME"
+           echo "JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}"
+           echo "JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}"
 
   job2:
     runs-on: ubuntu-latest
     needs: example-job
     steps:
-      - name: print
+      - name: Print JFrog Credentials in Job 2
         run: |
           echo "JFROG_USERNAME: ${{ needs.example-job.outputs.JFROG_USERNAME }}"
           echo "JFROG_PASSWORD: ${{ needs.example-job.outputs.JFROG_PASSWORD }}"
