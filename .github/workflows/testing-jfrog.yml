@@ -25,8 +25,8 @@ jobs:
 
       - name: Print JFrog Credentials
         run: |
-          echo "JFROG_USERNAME: ${{ steps.call-reusable.outputs.JFROG_USERNAME }}"
-          echo "JFROG_PASSWORD: ${{ steps.call-reusable.outputs.JFROG_PASSWORD }}"
+          echo "JFROG_USERNAME: $JFROG_USERNAME"
+          echo "JFROG_PASSWORD: $JFROG_PASSWORD"
 
 
           
