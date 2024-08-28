@@ -1,6 +1,8 @@
-name: PR testing
+name: Pull Request Workflow
+
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   dump_contexts_to_log:
